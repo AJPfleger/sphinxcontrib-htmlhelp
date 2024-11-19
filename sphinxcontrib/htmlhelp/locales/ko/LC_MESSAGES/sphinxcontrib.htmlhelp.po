@@ -25,8 +25,8 @@ msgstr ""
 
 #: sphinxcontrib/htmlhelp/__init__.py:147
 #, python-format
-msgid "You can now run HTML Help Workshop with the .htp file in %(outdir)s."
-msgstr "이제 %(outdir)s에서 .htp 파일을 이용하여 HTML Help Workshop을 실행할 수 있습니다."
+msgid "You can now run HTML Help Workshop with the .hhp file in %(outdir)s."
+msgstr "이제 %(outdir)s에서 .hhp 파일을 이용하여 HTML Help Workshop을 실행할 수 있습니다."
 
 #: sphinxcontrib/htmlhelp/__init__.py:203
 msgid "copying stopword list"
