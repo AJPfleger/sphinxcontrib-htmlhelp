@@ -13,7 +13,7 @@ urls.Download = "https://pypi.org/project/sphinxcontrib-htmlhelp/"
 urls.Homepage = "https://www.sphinx-doc.org/"
 urls."Issue tracker" = "https://github.com/sphinx-doc/sphinx/issues/"
 license.text = "BSD-2-Clause"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 
 # Classifiers list: https://pypi.org/classifiers/
 classifiers = [
@@ -27,11 +27,12 @@ classifiers = [
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
     "Framework :: Sphinx",
     "Framework :: Sphinx :: Extension",
     "Topic :: Documentation",
@@ -73,7 +74,7 @@ include = [
 ]
 
 [tool.mypy]
-python_version = "3.9"
+python_version = "3.10"
 packages = [
     "sphinxcontrib",
     "tests",
