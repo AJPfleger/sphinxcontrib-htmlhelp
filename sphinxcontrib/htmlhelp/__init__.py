@@ -8,7 +8,7 @@ import re
 from html.entities import codepoint2name
 from os import path
 from pathlib import Path
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, Literal
 
 import sphinx
 from docutils import nodes
@@ -285,10 +285,12 @@ class HTMLHelpBuilder(StandaloneHTMLBuilder):
         with open(filename, 'w', encoding=self.encoding, errors='xmlcharrefreplace') as f:
             f.write('<UL>\n')
 
+            IndexEntryTargets = list[tuple[str | None, str | Literal[False]]]
+
             def write_index(
                 title: str,
-                refs: list[tuple[str, str]],
-                subitems: list[tuple[str, list[tuple[str, str]]]],
+                refs: IndexEntryTargets,
+                subitems: list[tuple[str, IndexEntryTargets]],
             ) -> None:
                 def write_param(name: str, value: str) -> None:
                     item = f'    <param name="{name}" value="{value}">\n'
@@ -299,12 +301,16 @@ class HTMLHelpBuilder(StandaloneHTMLBuilder):
                 if len(refs) == 0:
                     write_param('See Also', title)
                 elif len(refs) == 1:
-                    write_param('Local', refs[0][1])
+                    target = refs[0][1]
+                    if target is not False:
+                        write_param('Local', target)
                 else:
                     for i, ref in enumerate(refs):
                         # XXX: better title?
-                        write_param('Name', '[%d] %s' % (i, ref[1]))
-                        write_param('Local', ref[1])
+                        target = ref[1]
+                        if target is not False:
+                            write_param('Name', '[%d] %s' % (i, target))
+                            write_param('Local', target)
                 f.write('</OBJECT>\n')
                 if subitems:
                     f.write('<UL> ')
