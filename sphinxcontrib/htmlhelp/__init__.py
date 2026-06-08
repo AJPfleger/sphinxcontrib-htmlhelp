@@ -8,7 +8,7 @@ import re
 from html.entities import codepoint2name
 from os import path
 from pathlib import Path
-from typing import TYPE_CHECKING, Any, Literal
+from typing import TYPE_CHECKING, Any, Literal, Optional, Union
 
 import sphinx
 from docutils import nodes
@@ -285,7 +285,7 @@ class HTMLHelpBuilder(StandaloneHTMLBuilder):
         with open(filename, 'w', encoding=self.encoding, errors='xmlcharrefreplace') as f:
             f.write('<UL>\n')
 
-            IndexEntryTargets = list[tuple[str | None, str | Literal[False]]]
+            IndexEntryTargets = list[tuple[Optional[str], Union[str, Literal[False]]]]
 
             def write_index(
                 title: str,
