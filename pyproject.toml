@@ -51,6 +51,7 @@ lint = [
     "ruff==0.5.5",
     "mypy",
     "types-docutils",
+    "types-html5lib",
 ]
 standalone = [
     "Sphinx>=5",

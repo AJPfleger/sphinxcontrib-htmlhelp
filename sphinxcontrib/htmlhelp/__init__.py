@@ -8,7 +8,7 @@ import re
 from html.entities import codepoint2name
 from os import path
 from pathlib import Path
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, AbstractSet
 
 import sphinx
 from docutils import nodes
@@ -170,7 +170,7 @@ class HTMLHelpBuilder(StandaloneHTMLBuilder):
         if locale is not None:
             self.lcid, self.encoding = locale
 
-    def prepare_writing(self, docnames: set[str]) -> None:
+    def prepare_writing(self, docnames: AbstractSet[str]) -> None:
         super().prepare_writing(docnames)
         self.globalcontext['html5_doctype'] = False
 
