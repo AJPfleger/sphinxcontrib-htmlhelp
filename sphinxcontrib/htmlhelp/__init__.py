@@ -8,7 +8,7 @@ import re
 from html.entities import codepoint2name
 from os import path
 from pathlib import Path
-from typing import TYPE_CHECKING, Any, AbstractSet
+from typing import TYPE_CHECKING, Any
 
 import sphinx
 from docutils import nodes
@@ -23,6 +23,8 @@ from sphinx.util.osutil import make_filename_from_project, relpath
 from sphinx.util.template import SphinxRenderer
 
 if TYPE_CHECKING:
+    from collections.abc import Set
+
     from docutils.nodes import Element, Node
     from sphinx.application import Sphinx
     from sphinx.config import Config
@@ -170,7 +172,7 @@ class HTMLHelpBuilder(StandaloneHTMLBuilder):
         if locale is not None:
             self.lcid, self.encoding = locale
 
-    def prepare_writing(self, docnames: AbstractSet[str]) -> None:
+    def prepare_writing(self, docnames: Set[str]) -> None:
         super().prepare_writing(docnames)
         self.globalcontext['html5_doctype'] = False
 
